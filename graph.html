@@ -8,10 +8,13 @@
         background-color: beige;
         margin: 0;
         padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       #myCanvas {
         background-color: white;
-        width: 100%;
+        max-width: 100%;
         height: auto;
       }
     </style>
@@ -73,8 +76,13 @@
           // Request next animation frame
           window.requestAnimationFrame(animateLine);
         } else {
-          // After animation ends, do something
-          // ADD FUNCTIONALITY
+          // After animation ends, remove canvas and insert image
+          canvas.remove();
+          var img = new Image();
+          img.src = "https://i.pinimg.com/originals/9d/58/37/9d5837c6f0cb8b18be6ddd1e2742472a.gif";
+          img.alt = "Placeholder image";
+          img.style.maxWidth = "100%";
+          document.body.appendChild(img);
         }
       }
 
