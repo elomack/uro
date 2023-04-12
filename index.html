@@ -11,6 +11,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        font-family: 'Segoe UI', sans-serif;
       }
       #myCanvas {
         max-width: 100%;
@@ -20,7 +21,7 @@
          transform: translateY(-50%);
       }
 
-      .center {
+      .centered {
         display: block;
         margin: auto;
         position: absolute;
@@ -30,10 +31,20 @@
         right: 0;
         width: 300%;
       }
+
+      video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+      
     </style>
     <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>
   </head>
   <body>
+    <video class="background-video" autoplay muted loop>
+      <source src="Maciek.mp4" type="video/mp4">
+    </video>
     <canvas id="myCanvas" width="400" height="400"></canvas>
     <div>
     <script>
@@ -44,6 +55,7 @@
       ctx.lineWidth = 2;
       ctx.strokeStyle = "black";
       ctx.lineCap = "round";
+      ctx.font = "18px Segoe-UI"
 
       // Draw Y axis
       ctx.beginPath();
@@ -57,7 +69,7 @@
       ctx.arrow(50,canvas.height - 50,canvas.width - 50,canvas.height - 50,[0, 1, -10, 1, -10, 5]);
       ctx.fill();
       ctx.stroke();
-      ctx.fillText("Renoma marki GoodLood", canvas.width - 140, canvas.height - 30);
+      ctx.fillText("Renoma marki GoodLood", canvas.width - 230, canvas.height - 25);
 
       // Animate graph main line
       var progress = 0;
@@ -95,7 +107,7 @@
           var img = new Image();
           img.src = "https://media.tenor.com/ptNG8DQFPD4AAAAj/explotion-explode.gif";
           img.alt = "Placeholder image";
-          img.classList.add("center");
+          img.classList.add("centered");
           img.style.maxWidth = "100%";
           document.body.appendChild(img);
 

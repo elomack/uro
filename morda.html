@@ -2,19 +2,31 @@
 <html>
   <head>
     <title>My Webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
         background-color: beige;
-        position: relative;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
       }
       
       .falling-image {
         position: absolute;
-        top: -50px;
-        left: 50%;
-        animation: falling 3s linear infinite;
-        transform: translateX(-50%);
-        z-index: -1; /* add a negative z-index to make the images appear behind the content */
+        width: 30px;
+        height: 30px;
+        animation: falling 2s linear infinite;
+        z-index: -1;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+      }
+      
+      @media (max-width: 600px) {
+        .falling-image {
+          width: 75px;
+          height: 75px;
+        }
       }
       
       @keyframes falling {
@@ -25,9 +37,50 @@
           transform: translateY(100vh);
         }
       }
+
+      .main-image {
+        max-width: 70%;
+        max-height: 70%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 10px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #ff8c00;
+      }
+
+      .text-box {
+        position: absolute;
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: #fff;
+        color: #000;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 15px #ff8c00;
+        text-align: center;
+      }
+
+      .text-box-top {
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .text-box-bottom {
+        bottom: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
     </style>
   </head>
   <body>
+    <div class="text-box text-box-top">Text up</div>
+    <img class = "main-image" src="https://static.generated.photos/vue-static/face-generator/landing/wall/14.jpg" alt="Generated face image">
+    <div class="text-box text-box-bottom">Text down</div>
     <script>
       // Create an array to hold the falling image elements
       const fallingImages = [];
@@ -35,22 +88,22 @@
       // Define a function to create a new falling image element and add it to the page
       function createFallingImage() {
         const img = document.createElement('img');
-        img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5be47nIqlBZfR0k-UuC1R0KfkkGKTkY8iFSMftKnBhg&s';
+        img.src = 'https://png.pngtree.com/png-vector/20220702/ourmid/pngtree-illustration-of-cute-ice-cream-icon-transparent-background-kawaii-png-image_5643991.png';
         img.alt = 'Falling image';
         img.classList.add('falling-image');
         img.style.left = Math.random() * window.innerWidth * 0.90 + 'px';
         document.body.appendChild(img);
         fallingImages.push(img);
         
-        // Remove the element from the DOM and from the fallingImages array after 3 seconds
+        // Remove the element from the DOM and from the fallingImages array after 4 seconds
         setTimeout(() => {
             img.remove();
             fallingImages.splice(fallingImages.indexOf(img), 1);
-          }, 3000);
+          }, 4000);
       }
 
       // Call the createFallingImage function every 100 milliseconds to add more falling images to the page
-      setInterval(createFallingImage, 100);
+      setInterval(createFallingImage, 200);
     </script>
   </body>
 </html>
