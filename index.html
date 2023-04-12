@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Webpage</title>
+    <style>
+      body {
+        background-color: beige;
+        position: relative;
+      }
+      
+      .falling-image {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        animation: falling 3s linear infinite;
+        transform: translateX(-50%);
+        z-index: -1; /* add a negative z-index to make the images appear behind the content */
+      }
+      
+      @keyframes falling {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(100vh);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Create an array to hold the falling image elements
+      const fallingImages = [];
+
+      // Define a function to create a new falling image element and add it to the page
+      function createFallingImage() {
+        const img = document.createElement('img');
+        img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5be47nIqlBZfR0k-UuC1R0KfkkGKTkY8iFSMftKnBhg&s';
+        img.alt = 'Falling image';
+        img.classList.add('falling-image');
+        img.style.left = Math.random() * window.innerWidth * 0.95 + 'px';
+        document.body.appendChild(img);
+        fallingImages.push(img);
+        
+        // Remove the element from the DOM and from the fallingImages array after 3 seconds
+        setTimeout(() => {
+            img.remove();
+            fallingImages.splice(fallingImages.indexOf(img), 1);
+          }, 3000);
+      }
+
+      // Call the createFallingImage function every 100 milliseconds to add more falling images to the page
+      setInterval(createFallingImage, 100);
+    </script>
+  </body>
+</html>
