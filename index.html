@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        background-color: beige;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #myCanvas {
+        max-width: 100%;
+        height: auto;
+        position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+      }
+
+      .center {
+        display: block;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 300%;
+      }
+    </style>
+    <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+    <div>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+
+      // Set line properties
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "black";
+      ctx.lineCap = "round";
+
+      // Draw Y axis
+      ctx.beginPath();
+      ctx.arrow(50,canvas.height - 50,50,50,[0, 1, -10, 1, -10, 5]);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillText("Ilość Maćka na planecie", 40, 40);
+      
+      // Draw X axis
+      ctx.beginPath();
+      ctx.arrow(50,canvas.height - 50,canvas.width - 50,canvas.height - 50,[0, 1, -10, 1, -10, 5]);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillText("Renoma marki GoodLood", canvas.width - 140, canvas.height - 30);
+
+      // Animate graph main line
+      var progress = 0;
+      var start = { x: 50, y: canvas.height - 50 };
+      var end = { x: canvas.width - 50, y: 50 };
+      var duration = 3000; // 3 seconds
+      var startTime = null;
+      var lineDrawn = false;
+
+      function animateLine(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        progress = elapsed / duration;
+
+        if (progress > 1) {
+          progress = 1;
+        }
+
+        // Calculate current line coordinates
+        var x = start.x + (end.x - start.x) * progress;
+        var y = start.y - (start.y - end.y) * progress;
+
+        // Draw line
+        ctx.beginPath();
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
+        if (progress < 1) {
+          // Request next animation frame
+          window.requestAnimationFrame(animateLine);
+        } else {
+          // After animation ends, remove canvas and insert image
+          canvas.remove();
+          var img = new Image();
+          img.src = "https://media.tenor.com/ptNG8DQFPD4AAAAj/explotion-explode.gif";
+          img.alt = "Placeholder image";
+          img.classList.add("center");
+          img.style.maxWidth = "100%";
+          document.body.appendChild(img);
+
+          // Remove image after 1 second
+        setTimeout(function() {
+        img.remove();
+        }, 1000);
+
+        setTimeout(function() {
+            window.location.href = "morda.html";
+            }, 800);
+        }
+      }
+
+      // Call animateLine function after a delay of 1 second
+      setTimeout(function() {
+        window.requestAnimationFrame(animateLine);
+      }, 1000);
+    </script>
+  </body>
+</html>
