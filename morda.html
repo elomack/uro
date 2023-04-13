@@ -14,8 +14,8 @@
       
       .falling-image {
         position: absolute;
-        width: 30px;
-        height: 30px;
+        width: 20%;
+        height: 10%;
         animation: falling 2s linear infinite;
         z-index: -1;
         border-radius: 50%;
@@ -24,8 +24,8 @@
       
       @media (max-width: 600px) {
         .falling-image {
-          width: 75px;
-          height: 75px;
+          width: 20%;
+          height: 10%;
         }
       }
       
@@ -38,22 +38,70 @@
         }
       }
 
+      @keyframes top-text-anim {
+        0% {
+          opacity: 0;
+        }
+        30% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.99;
+        }
+      }
+
+      @keyframes bottom-text-anim {
+        0% {
+          opacity: 0;
+          top: 80%;
+        }
+        30% {
+          opacity: 1;
+          top: 53%;
+        }
+        100% {
+          opacity: 0.99;
+          top: 53%;
+        }
+      }
+
+      @keyframes main-image-anim {
+        0% {
+          opacity: 0;
+          top: 50%;
+        }
+        30% {
+          opacity: 1;
+          top: 33%;
+        }
+        100% {
+          opacity: 0.99;
+          top: 33%;
+        }
+      }
+
       .main-image {
         max-width: 70%;
         max-height: 70%;
         position: absolute;
         top: 50%;
+        opacity: 0;
         left: 50%;
         transform: translate(-50%, -50%);
         border: 10px solid #fff;
         border-radius: 50%;
         box-shadow: 0 0 15px #ff8c00;
+        animation-name: main-image-anim;
+        animation-duration: 3s;
+        animation-delay: 2s;
+        animation-fill-mode: forwards;
       }
 
       .text-box {
         position: absolute;
-        width: 80%;
-        max-width: 600px;
+        opacity: 0;
+        max-width: 80%;
+        width: 75%;
         padding: 20px;
         background-color: #fff;
         color: #000;
@@ -64,15 +112,23 @@
       }
 
       .text-box-top {
-        top: 20%;
+        top: 5%;
         left: 50%;
         transform: translateX(-50%);
+        animation-name: top-text-anim;
+        animation-duration: 5s;
+        animation-delay: 3s;
+        animation-fill-mode: forwards;
       }
 
       .text-box-bottom {
-        bottom: 20%;
+        top: 53%;
         left: 50%;
         transform: translateX(-50%);
+        animation-name: bottom-text-anim;
+        animation-duration: 5s;
+        animation-delay: 4s;
+        animation-fill-mode: forwards;
       }
 
     </style>

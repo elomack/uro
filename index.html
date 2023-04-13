@@ -5,39 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
-        background-color: beige;
+        background-color: black;
         margin: 0;
         padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         font-family: 'Segoe UI', sans-serif;
+        z-index: 0;
       }
       #myCanvas {
-        max-width: 100%;
+        max-width: 99%;
         height: auto;
         position: absolute;
-         top: 50%;
-         transform: translateY(-50%);
+        top: 60%;
+        transform: translateY(-35%);
+        z-index: 2;
+        border: 2px solid black;
+        background-color: beige;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        animation-name: falling-block;
+        animation-duration: 4s;
+        animation-delay: 1s;
       }
 
-      .centered {
+      .explosion {
         display: block;
         margin: auto;
         position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 300%;
+        height: 250%;
+        width: 200%;
+        z-index: 3;
       }
 
-      video {
+      .background-video {
         width: 100vw;
         height: 100vh;
         object-fit: cover;
+        z-index: 1;
+        opacity: 1;
+        animation-name: background-transition;
+        animation-duration: 4s;
+        animation-delay: 1s;
       }
       
+      @keyframes falling-block {
+        0%   {background-color: beige; top: 60%;}
+        100% {background-color: orange; top: 20%;}
+      }
+
+      @keyframes background-transition {
+        0%   {opacity: 1; }
+        75% {opacity: 0.2;}
+        85% {opacity: 0; display: none;}
+        100% {opacity: 0.1;}
+      }
+
     </style>
     <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>
   </head>
@@ -46,7 +70,6 @@
       <source src="Maciek.mp4" type="video/mp4">
     </video>
     <canvas id="myCanvas" width="400" height="400"></canvas>
-    <div>
     <script>
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
@@ -105,10 +128,9 @@
           // After animation ends, remove canvas and insert image
           canvas.remove();
           var img = new Image();
-          img.src = "https://media.tenor.com/ptNG8DQFPD4AAAAj/explotion-explode.gif";
+          img.src = "https://i.gifer.com/origin/d4/d43612896ed91c111a46c2965c9e7f25_w200.gif";
           img.alt = "Placeholder image";
-          img.classList.add("centered");
-          img.style.maxWidth = "100%";
+          img.classList.add("explosion");
           document.body.appendChild(img);
 
           // Remove image after 1 second
@@ -118,7 +140,7 @@
 
         setTimeout(function() {
             window.location.href = "morda.html";
-            }, 800);
+            }, 500);
         }
       }
 
