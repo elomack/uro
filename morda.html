@@ -22,7 +22,7 @@
         position: absolute;
         width: 20%;
         height: 10%;
-        animation: falling 2s linear infinite;
+        animation: falling 4s linear infinite;
         z-index: -1;
         border-radius: 50%;
         box-shadow: 0 0 5px #ff8c00;
@@ -102,8 +102,9 @@
         box-shadow: 0 0 15px #ff8c00;
         animation-name: main-image-anim;
         animation-duration: 3s;
-        animation-delay: 8s;
+        animation-delay: 13s;
         animation-fill-mode: forwards;
+        z-index: 1;
       }
 
       .text-box {
@@ -114,10 +115,9 @@
         padding: 20px;
         background-color: #fff;
         color: #000;
-        font-weight: bold;
         border-radius: 5px;
         box-shadow: 0 0 15px #ff8c00;
-        text-align: center;
+        text-align: left;
       }
 
       .text-box-top {
@@ -126,17 +126,18 @@
         transform: translateX(-50%);
         animation-name: top-text-anim;
         animation-duration: 5s;
-        animation-delay: 9s;
+        animation-delay: 14s;
         animation-fill-mode: forwards;
       }
 
       .text-box-bottom {
         top: 43%;
         left: 50%;
+        z-index: 1;
         transform: translateX(-50%);
         animation-name: bottom-text-anim;
         animation-duration: 5s;
-        animation-delay: 10s;
+        animation-delay: 15s;
         animation-fill-mode: forwards;
       }
 
@@ -150,6 +151,7 @@
         opacity: 0;
         font-family: 'Segoe UI', sans-serif;
         font-weight: bold;
+        font-size: 18px;
         border-radius: 6px;
         border: none;
         background-color: #fff;
@@ -166,18 +168,21 @@
         left: 20%;
         animation-name: tilt-n-move-shaking, audio-button-anim-start, audio-button-anim-end;
         animation-duration: 1s, 2s, 1s;
-        animation-delay: 0.5s, 0.5s, 3s;
+        animation-delay: 0.5s, 0.5s, 8s;
         animation-iteration-count: infinite, 1, 1;
         animation-fill-mode: forwards, forwards, forwards;
-        visibility: hidden
+        visibility: hidden;
+        z-index: 5;
       }
 
       #mock-button {
         position: absolute;
+        z-index: 4;
         padding: 6px 14px;
         opacity: 0;
         font-family: 'Segoe UI', sans-serif;
         font-weight: bold;
+        font-size: 18px;
         border-radius: 6px;
         border: none;
         background-color: #fff;
@@ -194,7 +199,7 @@
         left: 20%;
         animation-name: audio-button-anim-start, audio-button-anim-end;
         animation-duration: 2s, 1s;
-        animation-delay: 4s, 7s;
+        animation-delay: 9s, 12s;
         animation-iteration-count: 1, 1;
         animation-fill-mode: forwards, forwards;
         visibility: hidden
@@ -230,15 +235,144 @@
         }
       }
 
+      .my-header {
+        font-weight: bold;
+        border-radius: 5px;
+      }
+
+      .my-image1 {
+        position: absolute;
+        max-width: 40%;
+        max-height: 40%;
+        z-index: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+        left: -40%;
+        top: 10%;
+        animation-name: move-image-1;
+        animation-direction: alternate;
+        animation-duration: 5s;
+        animation-delay: 3;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes move-image-1 {
+        0% {
+          left: -40%;
+          top: 10%;
+        }
+        100% {
+          left: 140%;
+          top: 50%;
+        }
+      }
+
+      .my-image2 {
+        position: absolute;
+        max-width: 40%;
+        max-height: 40%;
+        z-index: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+        left: 140%;
+        top: 80%;
+        animation-name: move-image-2;
+        animation-direction: alternate;
+        animation-duration: 5s;
+        animation-delay: 3;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes move-image-2 {
+        0% {
+          left: 140%;
+          top: 80%;
+        }
+        100% {
+          left: -40%;
+          top: 0%;
+        }
+      }
+
+      .my-image3 {
+        position: absolute;
+        max-width: 40%;
+        max-height: 40%;
+        z-index: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+        left: 140%;
+        top: 0%;
+        animation-name: move-image-3;
+        animation-direction: alternate;
+        animation-duration: 5s;
+        animation-delay: 3;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes move-image-3 {
+        0% {
+          left: 140%;
+          top: 0%;
+        }
+        100% {
+          left: -40%;
+          top: 100%;
+        }
+      }
+
+      .my-image4 {
+        position: absolute;
+        max-width: 40%;
+        max-height: 40%;
+        z-index: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+        left: 140%;
+        top: 0%;
+        animation-name: move-image-4;
+        animation-direction: alternate;
+        animation-duration: 5s;
+        animation-delay: 3;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes move-image-4 {
+        0% {
+          left: -40%;
+          top: 50%;
+        }
+        100% {
+          left: 140%;
+          top: 10%;
+        }
+      }
+
     </style>
   </head>
   <body>
-    <img class = "main-image" src="https://static.generated.photos/vue-static/face-generator/landing/wall/14.jpg" alt="Generated face image">
-    <div class="text-box text-box-bottom">Żebyś zawsze miał:<br>
-      Dobry mood...<br>Często lood...<br>Kraftów w brud...<br>
-      A skoro wszystko good...<br>To także wielki fioot...<br>
-      Boś cool doode!<br></div>
+    <img class = "main-image" src="Maciek_main.jpg">
     
+    <div class="text-box text-box-bottom">
+      <p class="my-header">Żebyś zawsze miał:</p>
+      <p>Dobry mood...<br>Często lood...<br>Kraftów w brood...<br>
+      A skoro wszystko good...<br>To także wielki fioot...<br>
+      Boś cool doode!<br></p><hr>
+      <p class="my-header">Życzą:</p>
+      <p>Ola, Gabi, Hela, Kacper, Karol, Mikołaj, Kasia,
+        Ula, Adam, Omar, Agata, Wera, Patryk... i pewnie ktoś jeszcze!</p><hr>
+      <h3 style="text-align: center">SMACZNEGO LOUDA!</h3>
+    </div>
+    
+    <img class="my-image1" src="Maciek1.jpg">
+    <img class="my-image2" src="Maciek2.jpg">
+    <img class="my-image3" src="Maciek3.jpg">
+    <img class="my-image4" src="Maciek4.jpg">
+
     <audio id="audio-player" controls autoplay loop>
       <source src="levanPollkaDrums.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
@@ -264,7 +398,7 @@
       // Define a function to create a new falling image element and add it to the page
       function createFallingImage() {
         const img = document.createElement('img');
-        img.src = 'https://png.pngtree.com/png-vector/20220702/ourmid/pngtree-illustration-of-cute-ice-cream-icon-transparent-background-kawaii-png-image_5643991.png';
+        img.src = 'loodMackOne.jpg';
         img.alt = 'Falling image';
         img.classList.add('falling-image');
         img.style.left = Math.random() * window.innerWidth * 0.90 + 'px';
