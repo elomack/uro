@@ -101,7 +101,7 @@
         box-shadow: 0 0 15px #ff8c00;
         animation-name: main-image-anim;
         animation-duration: 3s;
-        animation-delay: 2s;
+        animation-delay: 8s;
         animation-fill-mode: forwards;
       }
 
@@ -125,7 +125,7 @@
         transform: translateX(-50%);
         animation-name: top-text-anim;
         animation-duration: 5s;
-        animation-delay: 3s;
+        animation-delay: 9s;
         animation-fill-mode: forwards;
       }
 
@@ -135,8 +135,98 @@
         transform: translateX(-50%);
         animation-name: bottom-text-anim;
         animation-duration: 5s;
-        animation-delay: 4s;
+        animation-delay: 10s;
         animation-fill-mode: forwards;
+      }
+
+      #audio-player {
+        display:none;
+      }
+
+      #play-audio-button {
+        position: absolute;
+        padding: 6px 14px;
+        opacity: 0;
+        font-family: 'Segoe UI', sans-serif;
+        font-weight: bold;
+        border-radius: 6px;
+        border: none;
+        background-color: #fff;
+        background-origin: border-box;
+        box-shadow: 0 0 15px #ff8c00;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        padding: 20px;
+        text-align: center;
+        max-width: 80%;
+        width: 60%;
+        top: 40%;
+        left: 20%;
+        animation-name: tilt-n-move-shaking, audio-button-anim-start, audio-button-anim-end;
+        animation-duration: 1s, 2s, 1s;
+        animation-delay: 0.5s, 0.5s, 3s;
+        animation-iteration-count: infinite, 1, 1;
+        animation-fill-mode: forwards, forwards, forwards;
+        visibility: hidden
+      }
+
+      #mock-button {
+        position: absolute;
+        padding: 6px 14px;
+        opacity: 0;
+        font-family: 'Segoe UI', sans-serif;
+        font-weight: bold;
+        border-radius: 6px;
+        border: none;
+        background-color: #fff;
+        background-origin: border-box;
+        box-shadow: 0 0 15px #ff8c00;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        padding: 20px;
+        text-align: center;
+        max-width: 80%;
+        width: 60%;
+        top: 40%;
+        left: 20%;
+        animation-name: audio-button-anim-start, audio-button-anim-end;
+        animation-duration: 2s, 1s;
+        animation-delay: 4s, 7s;
+        animation-iteration-count: 1, 1;
+        animation-fill-mode: forwards, forwards;
+        visibility: hidden
+      }
+
+      @keyframes tilt-n-move-shaking {
+        0% { transform: translate(0, 0) rotate(0deg);}
+        25% { transform: translate(5px, 5px) rotate(5deg); }
+        50% { transform: translate(0, 0) rotate(0eg); }
+        75% { transform: translate(-5px, 5px) rotate(-5deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+      }
+
+      @keyframes audio-button-anim-start {
+        0% {
+          opacity: 0;
+          visibility: hidden;
+        }
+        100% {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      @keyframes audio-button-anim-end {
+        0% {
+          opacity: 1;
+          visibility: visible;
+        }
+        100% {
+          opacity: 0;
+          visibility: hidden;
+        }
       }
 
     </style>
@@ -145,10 +235,29 @@
     <div class="text-box text-box-top">Text up</div>
     <img class = "main-image" src="https://static.generated.photos/vue-static/face-generator/landing/wall/14.jpg" alt="Generated face image">
     <div class="text-box text-box-bottom">Text down</div>
+    
+    <audio id="audio-player" controls autoplay>
+      <source src="levanPollkaDrums.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    
+    <button id="play-audio-button" onclick="playAudio()">Wciśnij i wejdź po louda!</button>
+    <button id="mock-button" onclick="">W sumie, to nie ma znaczenia, czy wciśniesz</button>
+
+    <script>
+      function playAudio() {
+        var audio = document.getElementById("audio-player");
+        var play_button = document.getElementById("play-audio-button");
+        audio.play();
+        audio.style.display = "none";
+        play_button.style.display = "none";
+      }
+    </script>
+
     <script>
       // Create an array to hold the falling image elements
       const fallingImages = [];
-
+    
       // Define a function to create a new falling image element and add it to the page
       function createFallingImage() {
         const img = document.createElement('img');
@@ -163,11 +272,14 @@
         setTimeout(() => {
             img.remove();
             fallingImages.splice(fallingImages.indexOf(img), 1);
-          }, 4000);
+        }, 4000);
       }
-
-      // Call the createFallingImage function every 100 milliseconds to add more falling images to the page
-      setInterval(createFallingImage, 200);
+    
+      // Call the createFallingImage function every 200 milliseconds after a delay of 5 seconds
+      setTimeout(() => {
+        setInterval(createFallingImage, 200);
+      }, 5000);
     </script>
+    
   </body>
 </html>
