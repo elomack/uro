@@ -9,7 +9,7 @@
       }
 
       body {
-        background-color: beige;
+        background-color: #ec9299;
         margin: 0;
         padding: 0;
         font-family: 'Segoe UI', sans-serif;
@@ -47,6 +47,7 @@
       @keyframes top-text-anim {
         0% {
           opacity: 0;
+          
         }
         30% {
           opacity: 1;
@@ -63,11 +64,11 @@
         }
         30% {
           opacity: 1;
-          top: 70%;
+          top: 43%;
         }
         100% {
           opacity: 0.99;
-          top: 70%;
+          top: 43%;
         }
       }
 
@@ -78,11 +79,11 @@
         }
         30% {
           opacity: 1;
-          top: 40%;
+          top: 22%;
         }
         100% {
           opacity: 0.99;
-          top: 40%;
+          top: 22%;
         }
       }
 
@@ -92,7 +93,7 @@
         width: 70%;
         height: auto;
         position: absolute;
-        top: 50%;
+        top: 22%;
         opacity: 0;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -130,7 +131,7 @@
       }
 
       .text-box-bottom {
-        top: 53%;
+        top: 43%;
         left: 50%;
         transform: translateX(-50%);
         animation-name: bottom-text-anim;
@@ -232,11 +233,13 @@
     </style>
   </head>
   <body>
-    <div class="text-box text-box-top">Text up</div>
     <img class = "main-image" src="https://static.generated.photos/vue-static/face-generator/landing/wall/14.jpg" alt="Generated face image">
-    <div class="text-box text-box-bottom">Text down</div>
+    <div class="text-box text-box-bottom">Żebyś zawsze miał:<br>
+      Dobry mood...<br>Często lood...<br>Kraftów w brud...<br>
+      A skoro wszystko good...<br>To także wielki fioot...<br>
+      Boś cool doode!<br></div>
     
-    <audio id="audio-player" controls autoplay>
+    <audio id="audio-player" controls autoplay loop>
       <source src="levanPollkaDrums.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
