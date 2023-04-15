@@ -352,6 +352,119 @@
         }
       }
 
+    
+      .my-image5 {
+        position: absolute;
+        max-width: 40%;
+        max-height: 40%;
+        z-index: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+        left: 140%;
+        top: 0%;
+        animation-name: move-image-5;
+        animation-direction: alternate;
+        animation-duration: 5s;
+        animation-delay: 3;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes move-image-5 {
+        0% {
+          left: -40%;
+          top: 50%;
+        }
+        100% {
+          left: 140%;
+          top: 10%;
+        }
+      }
+
+      .my-image6 {
+        position: absolute;
+        max-width: 40%;
+        max-height: 40%;
+        z-index: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+        left: 140%;
+        top: 0%;
+        animation-name: move-image-6;
+        animation-direction: alternate;
+        animation-duration: 5s;
+        animation-delay: 3;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes move-image-6 {
+        0% {
+          left: -40%;
+          top: 50%;
+        }
+        100% {
+          left: 140%;
+          top: 10%;
+        }
+      }
+
+      .my-image7 {
+        position: absolute;
+        max-width: 40%;
+        max-height: 40%;
+        z-index: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+        left: 140%;
+        top: 0%;
+        animation-name: move-image-7;
+        animation-direction: alternate;
+        animation-duration: 5s;
+        animation-delay: 3;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes move-image-7 {
+        0% {
+          left: -40%;
+          top: 50%;
+        }
+        100% {
+          left: 140%;
+          top: 10%;
+        }
+      }
+
+      .my-image8 {
+        position: absolute;
+        max-width: 40%;
+        max-height: 40%;
+        z-index: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff8c00;
+        left: 140%;
+        top: 0%;
+        animation-name: move-image-8;
+        animation-direction: alternate;
+        animation-duration: 5s;
+        animation-delay: 3;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes move-image-8 {
+        0% {
+          left: -40%;
+          top: 50%;
+        }
+        100% {
+          left: 140%;
+          top: 10%;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -372,6 +485,10 @@
     <img class="my-image2" src="Maciek2.jpg">
     <img class="my-image3" src="Maciek3.jpg">
     <img class="my-image4" src="Maciek4.jpg">
+    <img class="my-image5" src="Maciek5.jpg">
+    <img class="my-image6" src="Maciek6.jpg">
+    <img class="my-image7" src="Maciek7.jpg">
+    <img class="my-image8" src="Maciek8.jpg">
 
     <audio id="audio-player" controls autoplay loop>
       <source src="levanPollkaDrums.mp3" type="audio/mpeg">
@@ -392,10 +509,8 @@
     </script>
 
     <script>
-      // Create an array to hold the falling image elements
       const fallingImages = [];
     
-      // Define a function to create a new falling image element and add it to the page
       function createFallingImage() {
         const img = document.createElement('img');
         img.src = 'loodMackOne.jpg';
@@ -405,14 +520,12 @@
         document.body.appendChild(img);
         fallingImages.push(img);
         
-        // Remove the element from the DOM and from the fallingImages array after 4 seconds
         setTimeout(() => {
             img.remove();
             fallingImages.splice(fallingImages.indexOf(img), 1);
         }, 4000);
       }
     
-      // Call the createFallingImage function every 200 milliseconds after a delay of 5 seconds
       setTimeout(() => {
         setInterval(createFallingImage, 200);
       }, 5000);
